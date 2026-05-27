@@ -3,244 +3,203 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Free AI Professional Tone Fixer — ToneFix AI</title>
-<meta name="description" content="Transform your text into professional, assertive, or concise tones instantly. 100+ specialized scenarios. Free, no login.">
-<link rel="stylesheet" href="style.css">
+<title>AI Tone Modifier — Rewrite Any Message into the Perfect Tone | ToneModifier</title>
+<meta name="description" content="Convert text into Professional, Friendly, Polite, Formal, Casual, Confident, Persuasive or Empathetic tones instantly. Free, no sign-up, AI powered.">
+<meta name="robots" content="index, follow">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#2563EB',surface:'#FAFAFA',border:'#E5E7EB',text:'#0F172A'}},fontFamily:{sans:['-apple-system','BlinkMacSystemFont','Segoe UI','system-ui','sans-serif']}}}</script>
+<style>
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;background:#FAFAFA;color:#0F172A}
+  .copy-btn:hover{opacity:0.8}
+  .result-card{transition:all 0.2s}
+  .result-card:hover{border-color:#2563EB}
+</style>
 </head>
-<body>
-<header>
-  <div class="logo">ToneFix <span>AI</span></div>
-  <nav>
-    <a href="index.html">Tools</a>
-    <a href="how-to-ask-client-for-payment-professionally.html">Examples</a>
-    <a href="how-to-ask-for-salary-raise-by-email.html">Salary</a>
-  </nav>
-  <a href="how-to-ask-client-for-payment-professionally.html" class="btn-cta">Try Free Tool</a>
+<body class="bg-[#FAFAFA] text-[#0F172A] min-h-screen">
+
+<!-- Nav -->
+<header class="sticky top-0 bg-white/85 backdrop-blur border-b border-gray-200 z-10">
+  <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+    <a href="index.html" class="text-xl font-bold tracking-tight">Tone<span class="text-primary">Modifier</span></a>
+    <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-500">
+      <a href="index.html" class="hover:text-gray-900">Tools</a>
+      <a href="tone/professional.html" class="hover:text-gray-900">Examples</a>
+      <a href="how-to-ask-for-raise.html" class="hover:text-gray-900">Scenarios</a>
+    </nav>
+    <a href="index.html" class="bg-primary text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-blue-700 transition">Try Free</a>
+  </div>
 </header>
-<main>
-  <section class="hero" style="padding-bottom:20px">
-    <h1>Make Your Message Sound Professional in Seconds</h1>
-    <p>Transform casual, rude or unclear messages into professional workplace communication.</p>
-    <div class="tool-box">
-      <textarea id="inputText" placeholder="Paste your message here... e.g. I can't do this anymore"></textarea>
-      <div class="btn-row">
-        <button id="submitBtn" class="btn-primary" onclick="processText()">✨ Convert to Professional Tone</button>
-        <button class="btn-outline" onclick="document.getElementById('inputText').value='';document.getElementById('results').classList.remove('visible')">Clear</button>
+
+<!-- Hero -->
+<main class="max-w-4xl mx-auto px-6 py-16">
+  <section class="text-center mb-12">
+    <h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-4">AI Tone Modifier</h1>
+    <p class="text-xl text-gray-500 mb-8 max-w-2xl mx-auto">Rewrite Any Message Into the Perfect Tone</p>
+    <p class="text-gray-400 mb-10 max-w-xl mx-auto">Convert text into Professional, Friendly, Polite, Formal, Casual, Confident, or Persuasive tones instantly.</p>
+    <div class="flex flex-wrap justify-center gap-4 text-sm text-gray-400 mb-10">
+      <span>✓ Free Forever</span><span>✓ No Sign-Up</span><span>✓ AI Powered</span><span>✓ Copy & Use Anywhere</span>
+    </div>
+
+    <!-- Tool -->
+    <div class="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+      <div class="bg-white rounded-2xl border border-gray-200 p-6 shadow-lg">
+        <textarea id="inputText" placeholder="Paste your message here..." class="w-full h-32 p-4 border border-gray-200 rounded-xl text-sm resize-y focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"></textarea>
+        <div class="flex gap-3 mt-4">
+          <button id="submitBtn" onclick="processText()" class="flex-1 bg-primary text-white h-12 rounded-full font-semibold text-sm hover:bg-blue-700 transition disabled:opacity-50">✨ Convert Tone</button>
+          <button onclick="clearAll()" class="px-4 h-12 border border-gray-200 rounded-full text-sm text-gray-500 hover:bg-gray-50 transition">Clear</button>
+        </div>
+        <div id="status" class="text-xs text-gray-400 mt-2 text-center min-h-4"></div>
       </div>
-      <div id="status" class="status"></div>
-      <div class="results" id="results">
-        <div class="result-card"><h3>👔 Formal & Professional</h3><p id="resFormal"></p><button class="copy-btn" onclick="copyCard('resFormal')">📋 Copy</button></div>
-        <div class="result-card"><h3>🔥 Polite but Assertive</h3><p id="resAssertive"></p><button class="copy-btn" onclick="copyCard('resAssertive')">📋 Copy</button></div>
-        <div class="result-card"><h3>⚡ Executive Concise</h3><p id="resConcise"></p><button class="copy-btn" onclick="copyCard('resConcise')">📋 Copy</button></div>
+      <div class="bg-white rounded-2xl border border-gray-200 p-6 shadow-lg text-left hidden md:block" id="resultsPreview">
+        <p class="text-xs text-gray-400 uppercase tracking-wide mb-4">Result Preview</p>
+        <div id="results" class="space-y-4">
+          <div class="result-card bg-gray-50 rounded-xl p-5 border border-gray-100 mb-4">
+        <h3 class="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-2">👔 Professional</h3>
+        <p class="text-sm text-gray-300 italic">Your result will appear here...</p>
+      </div>
+      <div class="result-card bg-gray-50 rounded-xl p-5 border border-gray-100 mb-4">
+        <h3 class="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-2">🤝 Polite</h3>
+        <p class="text-sm text-gray-300 italic">Your result will appear here...</p>
+      </div>
+      <div class="result-card bg-gray-50 rounded-xl p-5 border border-gray-100">
+        <h3 class="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-2">💪 Confident</h3>
+        <p class="text-sm text-gray-300 italic">Your result will appear here...</p>
+      </div>
+        </div>
       </div>
     </div>
-    <p class="example-hint">↓ Try: "I want to leave early today" or "Why haven't you paid yet"</p>
+    <p class="text-xs text-gray-400 mt-4">↓ Try: "Why haven't you paid me yet?" or "I want a raise but I'm nervous to ask"</p>
   </section>
-  <h2 class="section-title">Popular Workplace Transformations</h2>
-  <div class="examples-grid">
-    <a href="how-to-say-no-to-additional-tasks.html" class="example-card">How to Say No to Your Boss</a>
-    <a href="how-to-ask-for-salary-raise-by-email.html" class="example-card">How to Ask for a Salary Increase</a>
-    <a href="how-to-decline-business-proposal.html" class="example-card">How to Reject a Client Politely</a>
-    <a href="how-to-ask-for-project-update-by-email.html" class="example-card">How to Ask for a Deadline Extension</a>
-    <a href="how-to-ask-client-for-payment-professionally.html" class="example-card">How to Ask Client for Payment</a>
-    <a href="how-to-follow-up-on-job-application.html" class="example-card">How to Follow Up After an Interview</a>
+
+  <!-- Trust Bar -->
+  <div class="flex flex-wrap justify-center gap-8 py-8 border-y border-gray-100 text-sm text-gray-400 mb-16">
+    <span>💬 100+ Email Scenarios</span>
+    <span>⚡ Instant Results</span>
+    <span>🔒 No Data Stored</span>
   </div>
-  <div class="trust-section">
-    <div class="trust-item"><div class="icon">💬</div><h3>Improve Communication</h3><p>Turn awkward or emotional messages into clear, professional language.</p></div>
-    <div class="trust-item"><div class="icon">🛡️</div><h3>Avoid Misunderstandings</h3><p>Different tones for different situations — formal, assertive, or concise.</p></div>
-    <div class="trust-item"><div class="icon">⚡</div><h3>Sound Professional Instantly</h3><p>No login required. Paste, click, copy. Done in seconds.</p></div>
-  </div>
-  <h2 class="section-title">All Tools & Scenarios</h2>
-  <section class="cat-section">
-          <h2 class="cat-title">求职与跟进</h2>
-          <div class="tool-grid"><a href="how-to-reply-to-recruiter-professionally.html" class="tool-card">
-              <span class="tool-icon">✍️</span>
-              <span class="tool-title">How to reply to recruiter professionally</span>
-              <span class="tool-arrow">→</span>
-            </a><a href="how-to-follow-up-on-job-application.html" class="tool-card">
-              <span class="tool-icon">💼</span>
-              <span class="tool-title">How to follow up on job application</span>
-              <span class="tool-arrow">→</span>
-            </a><a href="how-to-ask-for-feedback-after-interview.html" class="tool-card">
-              <span class="tool-icon">✍️</span>
-              <span class="tool-title">How to ask for feedback after interview</span>
-              <span class="tool-arrow">→</span>
-            </a><a href="how-to-follow-up-after-interview-no-response.html" class="tool-card">
-              <span class="tool-icon">✍️</span>
-              <span class="tool-title">How to follow up after interview no response</span>
-              <span class="tool-arrow">→</span>
-            </a><a href="how-to-ask-for-salary-raise-by-email.html" class="tool-card">
-              <span class="tool-icon">✍️</span>
-              <span class="tool-title">How to ask for salary raise by email</span>
-              <span class="tool-arrow">→</span>
-            </a><a href="how-to-accept-job-offer-and-negotiate-salary.html" class="tool-card">
-              <span class="tool-icon">💼</span>
-              <span class="tool-title">How to accept job offer and negotiate salary</span>
-              <span class="tool-arrow">→</span>
-            </a><a href="how-to-decline-job-offer-politely.html" class="tool-card">
-              <span class="tool-icon">💼</span>
-              <span class="tool-title">How to decline job offer politely</span>
-              <span class="tool-arrow">→</span>
-            </a><a href="thank-you-email-after-interview.html" class="tool-card">
-              <span class="tool-icon">✍️</span>
-              <span class="tool-title">Thank you email after interview</span>
-              <span class="tool-arrow">→</span>
-            </a></div>
-        </section><section class="cat-section">
-          <h2 class="cat-title">邮件润色与沟通</h2>
-          <div class="tool-grid"><a href="how-to-tell-boss-too-much-work.html" class="tool-card">
-              <span class="tool-icon">✍️</span>
-              <span class="tool-title">How to tell boss too much work</span>
-              <span class="tool-arrow">→</span>
-            </a><a href="how-to-say-no-to-additional-tasks.html" class="tool-card">
-              <span class="tool-icon">✍️</span>
-              <span class="tool-title">How to say no to additional tasks</span>
-              <span class="tool-arrow">→</span>
-            </a><a href="how-to-ask-for-project-update-by-email.html" class="tool-card">
-              <span class="tool-icon">✍️</span>
-              <span class="tool-title">How to ask for project update by email</span>
-              <span class="tool-arrow">→</span>
-            </a><a href="apology-letter-for-project-delay.html" class="tool-card">
-              <span class="tool-icon">✍️</span>
-              <span class="tool-title">Apology letter for project delay</span>
-              <span class="tool-arrow">→</span>
-            </a><a href="how-to-ask-for-mental-health-day.html" class="tool-card">
-              <span class="tool-icon">✍️</span>
-              <span class="tool-title">How to ask for mental health day</span>
-              <span class="tool-arrow">→</span>
-            </a><a href="how-to-introduce-yourself-to-new-team.html" class="tool-card">
-              <span class="tool-icon">✍️</span>
-              <span class="tool-title">How to introduce yourself to new team</span>
-              <span class="tool-arrow">→</span>
-            </a><a href="professional-farewell-email-to-colleagues.html" class="tool-card">
-              <span class="tool-icon">✍️</span>
-              <span class="tool-title">Professional farewell email to colleagues</span>
-              <span class="tool-arrow">→</span>
-            </a><a href="how-to-ask-for-letter-of-recommendation.html" class="tool-card">
-              <span class="tool-icon">✍️</span>
-              <span class="tool-title">How to ask for letter of recommendation</span>
-              <span class="tool-arrow">→</span>
-            </a></div>
-        </section><section class="cat-section">
-          <h2 class="cat-title">商务摩擦与催款</h2>
-          <div class="tool-grid"><a href="how-to-ask-client-for-payment-professionally.html" class="tool-card">
-              <span class="tool-icon">💰</span>
-              <span class="tool-title">How to ask client for payment professionally</span>
-              <span class="tool-arrow">→</span>
-            </a><a href="how-to-tell-client-they-are-wrong.html" class="tool-card">
-              <span class="tool-icon">🔥</span>
-              <span class="tool-title">How to tell client they are wrong</span>
-              <span class="tool-arrow">→</span>
-            </a><a href="how-to-decline-business-proposal.html" class="tool-card">
-              <span class="tool-icon">✍️</span>
-              <span class="tool-title">How to decline business proposal</span>
-              <span class="tool-arrow">→</span>
-            </a><a href="how-to-follow-up-on-unpaid-invoice.html" class="tool-card">
-              <span class="tool-icon">✍️</span>
-              <span class="tool-title">How to follow up on unpaid invoice</span>
-              <span class="tool-arrow">→</span>
-            </a><a href="how-to-ask-client-for-budget-increase.html" class="tool-card">
-              <span class="tool-icon">🔥</span>
-              <span class="tool-title">How to ask client for budget increase</span>
-              <span class="tool-arrow">→</span>
-            </a><a href="how-to-handle-client-who-blames-you.html" class="tool-card">
-              <span class="tool-icon">🔥</span>
-              <span class="tool-title">How to handle client who blames you</span>
-              <span class="tool-arrow">→</span>
-            </a><a href="how-to-break-up-with-difficult-client.html" class="tool-card">
-              <span class="tool-icon">🔥</span>
-              <span class="tool-title">How to break up with difficult client</span>
-              <span class="tool-arrow">→</span>
-            </a><a href="how-to-tell-client-you-are-raising-rates.html" class="tool-card">
-              <span class="tool-icon">🔥</span>
-              <span class="tool-title">How to tell client you are raising rates</span>
-              <span class="tool-arrow">→</span>
-            </a></div>
-        </section><section class="cat-section">
-          <h2 class="cat-title">日常办公</h2>
-          <div class="tool-grid"><a href="short-resignation-letter-email-template.html" class="tool-card">
-              <span class="tool-icon">✍️</span>
-              <span class="tool-title">Short resignation letter email template</span>
-              <span class="tool-arrow">→</span>
-            </a><a href="how-to-call-out-sick-to-boss.html" class="tool-card">
-              <span class="tool-icon">✍️</span>
-              <span class="tool-title">How to call out sick to boss</span>
-              <span class="tool-arrow">→</span>
-            </a><a href="how-to-schedule-a-meeting-by-email.html" class="tool-card">
-              <span class="tool-icon">✍️</span>
-              <span class="tool-title">How to schedule a meeting by email</span>
-              <span class="tool-arrow">→</span>
-            </a><a href="how-to-apologize-for-missing-a-meeting.html" class="tool-card">
-              <span class="tool-icon">✍️</span>
-              <span class="tool-title">How to apologize for missing a meeting</span>
-              <span class="tool-arrow">→</span>
-            </a><a href="how-to-decline-meeting-that-could-be-email.html" class="tool-card">
-              <span class="tool-icon">✍️</span>
-              <span class="tool-title">How to decline meeting that could be email</span>
-              <span class="tool-arrow">→</span>
-            </a><a href="how-to-request-meeting-with-executive.html" class="tool-card">
-              <span class="tool-icon">✍️</span>
-              <span class="tool-title">How to request meeting with executive</span>
-              <span class="tool-arrow">→</span>
-            </a></div>
-        </section><section class="cat-section">
-          <h2 class="cat-title">职场冲突</h2>
-          <div class="tool-grid"><a href="how-to-professionally-say-stop-micromanaging.html" class="tool-card">
-              <span class="tool-icon">✍️</span>
-              <span class="tool-title">How to professionally say stop micromanaging</span>
-              <span class="tool-arrow">→</span>
-            </a><a href="how-to-respond-to-aggressive-email.html" class="tool-card">
-              <span class="tool-icon">✍️</span>
-              <span class="tool-title">How to respond to aggressive email</span>
-              <span class="tool-arrow">→</span>
-            </a><a href="how-to-disagree-with-boss-in-email.html" class="tool-card">
-              <span class="tool-icon">✍️</span>
-              <span class="tool-title">How to disagree with boss in email</span>
-              <span class="tool-arrow">→</span>
-            </a><a href="how-to-explain-major-mistake-to-boss.html" class="tool-card">
-              <span class="tool-icon">✍️</span>
-              <span class="tool-title">How to explain major mistake to boss</span>
-              <span class="tool-arrow">→</span>
-            </a><a href="how-to-tell-boss-they-made-a-mistake.html" class="tool-card">
-              <span class="tool-icon">✍️</span>
-              <span class="tool-title">How to tell boss they made a mistake</span>
-              <span class="tool-arrow">→</span>
-            </a></div>
-        </section><section class="cat-section">
-          <h2 class="cat-title">销售与开发信</h2>
-          <div class="tool-grid"><a href="cold-email-template-for-freelance-graphic-designers.html" class="tool-card">
-              <span class="tool-icon">✍️</span>
-              <span class="tool-title">Cold email template for freelance graphic designers</span>
-              <span class="tool-arrow">→</span>
-            </a><a href="cold-outreach-template-for-b2b-software-sales.html" class="tool-card">
-              <span class="tool-icon">✍️</span>
-              <span class="tool-title">Cold outreach template for b2b software sales</span>
-              <span class="tool-arrow">→</span>
-            </a><a href="how-to-pitch-freelance-writing-services.html" class="tool-card">
-              <span class="tool-icon">✍️</span>
-              <span class="tool-title">How to pitch freelance writing services</span>
-              <span class="tool-arrow">→</span>
-            </a><a href="freelance-retainer-agreement-pitch-email.html" class="tool-card">
-              <span class="tool-icon">✍️</span>
-              <span class="tool-title">Freelance retainer agreement pitch email</span>
-              <span class="tool-arrow">→</span>
-            </a><a href="how-to-write-email-for-virtual-assistant-pitch.html" class="tool-card">
-              <span class="tool-icon">✍️</span>
-              <span class="tool-title">How to write email for virtual assistant pitch</span>
-              <span class="tool-arrow">→</span>
-            </a></div>
-        </section><section class="cat-section">
-          <h2 class="cat-title">自由职业</h2>
-          <div class="tool-grid"><a href="how-to-ask-for-deposit-before-starting-work.html" class="tool-card">
-              <span class="tool-icon">✍️</span>
-              <span class="tool-title">How to ask for deposit before starting work</span>
-              <span class="tool-arrow">→</span>
-            </a></div>
-        </section>
+
+  <!-- Popular Tones -->
+  <section class="mb-16">
+    <h2 class="text-2xl font-bold text-center mb-8">Popular Tones</h2>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <a href="tone/professional.html" class="bg-white rounded-2xl border border-gray-200 p-5 text-center hover:shadow-lg hover:border-primary transition">
+  <div class="text-3xl mb-2">👔</div>
+  <h3 class="font-semibold text-sm">Professional</h3>
+</a><a href="tone/friendly.html" class="bg-white rounded-2xl border border-gray-200 p-5 text-center hover:shadow-lg hover:border-primary transition">
+  <div class="text-3xl mb-2">😊</div>
+  <h3 class="font-semibold text-sm">Friendly</h3>
+</a><a href="tone/polite.html" class="bg-white rounded-2xl border border-gray-200 p-5 text-center hover:shadow-lg hover:border-primary transition">
+  <div class="text-3xl mb-2">🤝</div>
+  <h3 class="font-semibold text-sm">Polite</h3>
+</a><a href="tone/formal.html" class="bg-white rounded-2xl border border-gray-200 p-5 text-center hover:shadow-lg hover:border-primary transition">
+  <div class="text-3xl mb-2">📋</div>
+  <h3 class="font-semibold text-sm">Formal</h3>
+</a><a href="tone/casual.html" class="bg-white rounded-2xl border border-gray-200 p-5 text-center hover:shadow-lg hover:border-primary transition">
+  <div class="text-3xl mb-2">💬</div>
+  <h3 class="font-semibold text-sm">Casual</h3>
+</a><a href="tone/confident.html" class="bg-white rounded-2xl border border-gray-200 p-5 text-center hover:shadow-lg hover:border-primary transition">
+  <div class="text-3xl mb-2">💪</div>
+  <h3 class="font-semibold text-sm">Confident</h3>
+</a><a href="tone/persuasive.html" class="bg-white rounded-2xl border border-gray-200 p-5 text-center hover:shadow-lg hover:border-primary transition">
+  <div class="text-3xl mb-2">🎯</div>
+  <h3 class="font-semibold text-sm">Persuasive</h3>
+</a><a href="tone/empathetic.html" class="bg-white rounded-2xl border border-gray-200 p-5 text-center hover:shadow-lg hover:border-primary transition">
+  <div class="text-3xl mb-2">💙</div>
+  <h3 class="font-semibold text-sm">Empathetic</h3>
+</a>
+    </div>
+  </section>
+
+  <!-- Popular Scenarios -->
+  <section class="mb-16">
+    <h2 class="text-2xl font-bold text-center mb-8">Popular Scenarios</h2>
+    <div class="grid md:grid-cols-4 gap-6">
+      <a href="how-to-ask-for-raise.html" class="bg-white rounded-2xl border border-gray-200 p-6 hover:shadow-lg hover:border-primary transition text-left">
+  <h3 class="font-semibold mb-2">Job Applications</h3>
+  <p class="text-xs text-gray-400">12 templates</p>
+</a><a href="how-to-ask-for-raise.html" class="bg-white rounded-2xl border border-gray-200 p-6 hover:shadow-lg hover:border-primary transition text-left">
+  <h3 class="font-semibold mb-2">Salary Negotiation</h3>
+  <p class="text-xs text-gray-400">8 templates</p>
+</a><a href="how-to-ask-for-raise.html" class="bg-white rounded-2xl border border-gray-200 p-6 hover:shadow-lg hover:border-primary transition text-left">
+  <h3 class="font-semibold mb-2">Client Communication</h3>
+  <p class="text-xs text-gray-400">14 templates</p>
+</a><a href="how-to-ask-for-raise.html" class="bg-white rounded-2xl border border-gray-200 p-6 hover:shadow-lg hover:border-primary transition text-left">
+  <h3 class="font-semibold mb-2">Workplace Emails</h3>
+  <p class="text-xs text-gray-400">18 templates</p>
+</a>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="mb-16 text-center">
+    <h2 class="text-2xl font-bold mb-8">How It Works</h2>
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="p-6"><div class="text-3xl mb-3">1</div><h3 class="font-semibold mb-2">Paste Your Message</h3><p class="text-sm text-gray-500">Type or paste any text you want to improve — from emails to Slack messages.</p></div>
+      <div class="p-6"><div class="text-3xl mb-3">2</div><h3 class="font-semibold mb-2">AI Rewrites Tone</h3><p class="text-sm text-gray-500">Our AI rewrites your message in three distinct professional tones in seconds.</p></div>
+      <div class="p-6"><div class="text-3xl mb-3">3</div><h3 class="font-semibold mb-2">Copy & Send</h3><p class="text-sm text-gray-500">Pick your favorite version, click copy, and paste it wherever you need.</p></div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="mb-16">
+    <h2 class="text-2xl font-bold text-center mb-8">Frequently Asked Questions</h2>
+    <div class="max-w-2xl mx-auto space-y-6">
+      <div class="bg-white rounded-2xl border border-gray-200 p-6">
+        <h3 class="font-semibold mb-2">What is an AI Tone Modifier?</h3>
+        <p class="text-sm text-gray-500">An AI Tone Modifier rewrites your text while keeping the original meaning but adjusting the tone — making it sound more professional, friendly, polite, or any other style you need.</p>
+      </div>
+      <div class="bg-white rounded-2xl border border-gray-200 p-6">
+        <h3 class="font-semibold mb-2">Is ToneModifier free?</h3>
+        <p class="text-sm text-gray-500">Yes. The core tool is completely free with no sign-up required. We may offer premium features in the future, but the tone conversion will always be free.</p>
+      </div>
+      <div class="bg-white rounded-2xl border border-gray-200 p-6">
+        <h3 class="font-semibold mb-2">Does the AI change the meaning of my message?</h3>
+        <p class="text-sm text-gray-500">No. The AI is designed to preserve your original meaning and intent while adjusting only the tone, wording, and emotional register of your message.</p>
+      </div>
+      <div class="bg-white rounded-2xl border border-gray-200 p-6">
+        <h3 class="font-semibold mb-2">Can I make my message sound more professional?</h3>
+        <p class="text-sm text-gray-500">Yes. Paste your message above and the tool will generate a polished, boardroom-ready version that maintains your original message.</p>
+      </div>
+    </div>
+  </section>
 </main>
-<footer>
-  <p>© 2026 ToneFix AI · <a href="privacy.html">Privacy Policy</a> · <a href="terms.html">Terms</a> · <a href="contact.html">Contact</a></p>
+
+<!-- Footer -->
+<footer class="border-t border-gray-200 bg-white">
+  <div class="max-w-6xl mx-auto px-6 py-12 grid grid-cols-2 md:grid-cols-5 gap-8 text-sm">
+    <div>
+      <h4 class="font-semibold mb-3">Product</h4>
+      <div class="space-y-2 text-gray-500">
+        <a href="tone/professional.html" class="block hover:text-gray-900">Tone Modifier</a>
+        <a href="email-tone-modifier.html" class="block hover:text-gray-900">Email Rewriter</a>
+        <a href="tone/professional.html" class="block hover:text-gray-900">Professional Tone</a>
+      </div>
+    </div>
+    <div>
+      <h4 class="font-semibold mb-3">Resources</h4>
+      <div class="space-y-2 text-gray-500">
+        <a href="how-to-ask-for-raise.html" class="block hover:text-gray-900">Examples</a>
+        <a href="index.html#faq" class="block hover:text-gray-900">FAQ</a>
+      </div>
+    </div>
+    <div>
+      <h4 class="font-semibold mb-3">Company</h4>
+      <div class="space-y-2 text-gray-500">
+        <a href="contact.html" class="block hover:text-gray-900">Contact</a>
+        <a href="privacy.html" class="block hover:text-gray-900">Privacy Policy</a>
+        <a href="terms.html" class="block hover:text-gray-900">Terms</a>
+      </div>
+    </div>
+    <div class="col-span-2 md:col-span-2">
+      <h4 class="font-semibold mb-3">ToneModifier</h4>
+      <p class="text-gray-400 text-xs leading-relaxed">AI-powered tone conversion for professional communication. Rewrite any message into the perfect tone — free, instant, no sign-up required.</p>
+    </div>
+  </div>
+  <div class="max-w-6xl mx-auto px-6 pb-8 text-center text-xs text-gray-400">
+    © 2026 ToneModifier. All rights reserved.
+  </div>
 </footer>
+
 <script src="script.js"></script>
 </body>
 </html>

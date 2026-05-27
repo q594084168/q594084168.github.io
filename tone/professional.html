@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Professional Tone Tone Converter — Free AI Rewriter | ToneModifier</title>
+<meta name="description" content="Convert casual or emotional messages into polished, boardroom-ready professional language.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://tonemodifier.com/tone/professional.html">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#2563EB',surface:'#FAFAFA',border:'#E5E7EB',text:'#0F172A'}},fontFamily:{sans:['-apple-system','BlinkMacSystemFont','Segoe UI','system-ui','sans-serif']}}}</script>
+<style>body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;background:#FAFAFA;color:#0F172A}.result-card:hover{border-color:#2563EB}</style>
+</head>
+<body class="bg-[#FAFAFA] text-[#0F172A]">
+<header class="sticky top-0 bg-white/85 backdrop-blur border-b border-gray-200 z-10">
+  <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+    <a href="../index.html" class="text-xl font-bold tracking-tight">Tone<span class="text-primary">Modifier</span></a>
+    <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-500">
+      <a href="../index.html" class="hover:text-gray-900">Tools</a>
+      <a href="../tone/professional.html" class="hover:text-gray-900">Examples</a>
+      <a href="../how-to-ask-for-raise.html" class="hover:text-gray-900">Scenarios</a>
+    </nav>
+    <a href="../index.html" class="bg-primary text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-blue-700 transition">Try Free</a>
+  </div>
+</header>
+
+<main class="max-w-4xl mx-auto px-6 py-16">
+  <section class="text-center mb-12">
+    <h1 class="text-4xl font-bold tracking-tight mb-4">Professional Tone Converter</h1>
+    <p class="text-lg text-gray-500 max-w-2xl mx-auto">Convert casual or emotional messages into polished, boardroom-ready professional language.</p>
+  </section>
+
+  <div class="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+    <div class="bg-white rounded-2xl border border-gray-200 p-6 shadow-lg">
+      <textarea id="inputText" placeholder="Paste your message here..." class="w-full h-32 p-4 border border-gray-200 rounded-xl text-sm resize-y focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"></textarea>
+      <div class="flex gap-3 mt-4">
+        <button id="submitBtn" onclick="processText()" class="flex-1 bg-primary text-white h-12 rounded-full font-semibold text-sm hover:bg-blue-700 transition disabled:opacity-50">✨ Make It Professional</button>
+        <button onclick="clearAll()" class="px-4 h-12 border border-gray-200 rounded-full text-sm text-gray-500 hover:bg-gray-50 transition">Clear</button>
+      </div>
+      <div id="status" class="text-xs text-gray-400 mt-2 text-center min-h-4"></div>
+    </div>
+    <div class="bg-white rounded-2xl border border-gray-200 p-6 shadow-lg" id="resultsPanel">
+      <p class="text-xs text-gray-400 uppercase tracking-wide mb-4">Result</p>
+      <div id="singleResult" class="text-sm leading-relaxed text-gray-700 min-h-20"></div>
+      <button class="mt-4 text-xs text-primary font-medium hidden" id="copySingleBtn" onclick="copySingle()">📋 Copy Result</button>
+    </div>
+  </div>
+
+  <section class="mt-16">
+    <h2 class="text-2xl font-bold text-center mb-8">Other Popular Tones</h2>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <a href="friendly.html" class="bg-white rounded-2xl border border-gray-200 p-5 text-center hover:shadow-lg hover:border-primary transition">
+  <div class="text-3xl mb-2">😊</div>
+  <h3 class="font-semibold text-sm">Friendly</h3>
+</a><a href="polite.html" class="bg-white rounded-2xl border border-gray-200 p-5 text-center hover:shadow-lg hover:border-primary transition">
+  <div class="text-3xl mb-2">🤝</div>
+  <h3 class="font-semibold text-sm">Polite</h3>
+</a><a href="formal.html" class="bg-white rounded-2xl border border-gray-200 p-5 text-center hover:shadow-lg hover:border-primary transition">
+  <div class="text-3xl mb-2">📋</div>
+  <h3 class="font-semibold text-sm">Formal</h3>
+</a><a href="casual.html" class="bg-white rounded-2xl border border-gray-200 p-5 text-center hover:shadow-lg hover:border-primary transition">
+  <div class="text-3xl mb-2">💬</div>
+  <h3 class="font-semibold text-sm">Casual</h3>
+</a><a href="confident.html" class="bg-white rounded-2xl border border-gray-200 p-5 text-center hover:shadow-lg hover:border-primary transition">
+  <div class="text-3xl mb-2">💪</div>
+  <h3 class="font-semibold text-sm">Confident</h3>
+</a><a href="persuasive.html" class="bg-white rounded-2xl border border-gray-200 p-5 text-center hover:shadow-lg hover:border-primary transition">
+  <div class="text-3xl mb-2">🎯</div>
+  <h3 class="font-semibold text-sm">Persuasive</h3>
+</a><a href="empathetic.html" class="bg-white rounded-2xl border border-gray-200 p-5 text-center hover:shadow-lg hover:border-primary transition">
+  <div class="text-3xl mb-2">💙</div>
+  <h3 class="font-semibold text-sm">Empathetic</h3>
+</a>
+    </div>
+  </section>
+
+  <section class="mt-16">
+    <h2 class="text-2xl font-bold text-center mb-8">Frequently Asked Questions</h2>
+    <div class="max-w-2xl mx-auto space-y-6">
+      <div class="bg-white rounded-2xl border border-gray-200 p-6">
+  <h3 class="font-semibold mb-2">What makes a message sound professional?</h3>
+  <p class="text-sm text-gray-500">Convert casual or emotional messages into polished, boardroom-ready professional language. Our AI adjusts wording, phrasing, and emotional register while preserving your original meaning.</p>
+</div>
+<div class="bg-white rounded-2xl border border-gray-200 p-6">
+  <h3 class="font-semibold mb-2">Is the Professional Tone Converter free?</h3>
+  <p class="text-sm text-gray-500">Yes. All tone conversion is completely free with no sign-up required. No hidden fees, no premium tiers for basic usage.</p>
+</div>
+<div class="bg-white rounded-2xl border border-gray-200 p-6">
+  <h3 class="font-semibold mb-2">Can I use this for professional emails?</h3>
+  <p class="text-sm text-gray-500">Absolutely. The Professional tone is designed for real workplace communication — emails, Slack messages, client correspondence, and more.</p>
+</div>
+    </div>
+  </section>
+</main>
+
+<footer class="border-t border-gray-200 bg-white mt-16">
+  <div class="max-w-6xl mx-auto px-6 py-8 text-center text-xs text-gray-400">
+    <a href="../index.html" class="hover:text-gray-600 mx-2">Home</a>·
+    <a href="../privacy.html" class="hover:text-gray-600 mx-2">Privacy</a>·
+    <a href="../terms.html" class="hover:text-gray-600 mx-2">Terms</a>·
+    <a href="../contact.html" class="hover:text-gray-600 mx-2">Contact</a>
+    <p class="mt-2">© 2026 ToneModifier</p>
+  </div>
+</footer>
+
+<script>
+const WORKER_URL="https://tone-modifier.594084168.workers.dev";
+const TONE="professional";
+async function processText(){
+  const t=document.getElementById("inputText").value.trim();
+  if(!t){document.getElementById("status").textContent="Please enter text first.";return}
+  const btn=document.getElementById("submitBtn");
+  btn.disabled=true;btn.textContent="Converting...";
+  document.getElementById("status").textContent="";
+  try{
+    const r=await fetch(WORKER_URL,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({text:t,tone:TONE,multi:false})});
+    const d=await r.json();
+    if(!r.ok){document.getElementById("status").textContent=d.error||"Error";return}
+    document.getElementById("singleResult").textContent=d.result||"Could not generate.";
+    document.getElementById("copySingleBtn").classList.remove("hidden");
+    document.getElementById("status").textContent="Done!";
+  }catch(e){document.getElementById("status").textContent="Network error."}
+  finally{btn.disabled=false;btn.textContent="✨ Make It Professional"}
+}
+function clearAll(){
+  document.getElementById("inputText").value="";
+  document.getElementById("singleResult").textContent="";
+  document.getElementById("copySingleBtn").classList.add("hidden");
+  document.getElementById("status").textContent="";
+}
+function copySingle(){
+  const t=document.getElementById("singleResult").textContent;
+  navigator.clipboard.writeText(t).then(()=>{
+    const btn=document.getElementById("copySingleBtn");
+    btn.textContent="Copied!";
+    setTimeout(()=>{btn.textContent="📋 Copy Result"},1500);
+  });
+}
+</script>
+</body>
+</html>

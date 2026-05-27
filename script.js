@@ -1,69 +1,65 @@
 /**
- * ToneModifier — Frontend Logic
- * 
- * 使用前请修改 WORKER_URL 为你的 Cloudflare Worker 地址。
+ * ToneModifier V2 — Homepage Script
  */
 const WORKER_URL = "https://tone-modifier.594084168.workers.dev";
 
-const inputEl = document.getElementById("inputText");
-const btnEl = document.getElementById("submitBtn");
-const statusEl = document.getElementById("status");
-const resultsEl = document.getElementById("results");
-const formalEl = document.getElementById("resFormal");
-const assertiveEl = document.getElementById("resAssertive");
-const conciseEl = document.getElementById("resConcise");
-
 async function processText() {
-  const text = inputEl.value.trim();
-  if (!text) {
-    showStatus("Please enter some text first.", "error");
-    return;
-  }
+  const input = document.getElementById("inputText").value.trim();
+  if (!input) { document.getElementById("status").textContent = "Please enter text first."; return }
 
-  btnEl.disabled = true;
-  btnEl.textContent = "Converting...";
-  showStatus("Generating three tone variations...", "");
-  resultsEl.classList.remove("visible");
+  const btn = document.getElementById("submitBtn");
+  btn.disabled = true; btn.textContent = "Converting...";
+  document.getElementById("status").textContent = "";
 
   try {
     const resp = await fetch(WORKER_URL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ text }),
+      body: JSON.stringify({ text: input, multi: true })
     });
-
     const data = await resp.json();
+    if (!resp.ok) { document.getElementById("status").textContent = data.error || "Error"; return }
 
-    if (!resp.ok) {
-      showStatus(data.error || "Request failed", "error");
-      return;
-    }
-
-    formalEl.textContent = data.formal || "N/A";
-    assertiveEl.textContent = data.assertive || "N/A";
-    conciseEl.textContent = data.concise || "N/A";
-    resultsEl.classList.add("visible");
-    showStatus("Done! Click any card's Copy button to use the text.", "success");
+    // Render 3-tone results
+    const results = document.getElementById("results");
+    results.innerHTML = `
+      <div class="result-card bg-gray-50 rounded-xl p-5 border border-gray-100">
+        <h3 class="text-xs font-semibold text-primary uppercase tracking-wide mb-2">👔 Professional</h3>
+        <p class="text-sm leading-relaxed text-gray-700">${escapeHtml(data.professional || "N/A")}</p>
+        <button class="mt-3 text-xs text-primary font-medium" onclick="copyText(this, '${escapeAttr(data.professional || "")}')">📋 Copy</button>
+      </div>
+      <div class="result-card bg-gray-50 rounded-xl p-5 border border-gray-100">
+        <h3 class="text-xs font-semibold text-primary uppercase tracking-wide mb-2">🤝 Polite</h3>
+        <p class="text-sm leading-relaxed text-gray-700">${escapeHtml(data.polite || "N/A")}</p>
+        <button class="mt-3 text-xs text-primary font-medium" onclick="copyText(this, '${escapeAttr(data.polite || "")}')">📋 Copy</button>
+      </div>
+      <div class="result-card bg-gray-50 rounded-xl p-5 border border-gray-100">
+        <h3 class="text-xs font-semibold text-primary uppercase tracking-wide mb-2">💪 Confident</h3>
+        <p class="text-sm leading-relaxed text-gray-700">${escapeHtml(data.confident || "N/A")}</p>
+        <button class="mt-3 text-xs text-primary font-medium" onclick="copyText(this, '${escapeAttr(data.confident || "")}')">📋 Copy</button>
+      </div>`;
+    document.getElementById("resultsPreview").classList.remove("hidden");
+    document.getElementById("status").textContent = "Done!";
   } catch (e) {
-    showStatus("Network error. Please check your connection and try again.", "error");
+    document.getElementById("status").textContent = "Network error. Please try again.";
   } finally {
-    btnEl.disabled = false;
-    btnEl.textContent = "✨ Convert to Professional Tone";
+    btn.disabled = false;
+    btn.textContent = "✨ Convert Tone";
   }
 }
 
-function showStatus(msg, cls) {
-  statusEl.textContent = msg;
-  statusEl.className = "status " + (cls || "");
+function clearAll() {
+  document.getElementById("inputText").value = "";
+  document.getElementById("results").innerHTML = `{{RESULT_PLACEHOLDER}}`;
+  document.getElementById("status").textContent = "";
 }
 
-function copyCard(cardId) {
-  const el = document.getElementById(cardId);
-  if (!el) return;
-  navigator.clipboard.writeText(el.textContent).then(() => {
-    const btn = el.parentElement.querySelector(".copy-btn");
-    const original = btn.textContent;
+function escapeHtml(s) { return (s || "").replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function escapeAttr(s) { return (s || "").replace(/'/g,"\\'").replace(/"/g,'&quot;'); }
+function copyText(btn, text) {
+  navigator.clipboard.writeText(text).then(() => {
+    const orig = btn.textContent;
     btn.textContent = "Copied!";
-    setTimeout(() => { btn.textContent = original; }, 1500);
+    setTimeout(() => { btn.textContent = orig; }, 1500);
   });
 }
