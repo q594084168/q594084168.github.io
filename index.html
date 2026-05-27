@@ -3,47 +3,54 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Free AI Professional Tone Fixer — ToneModifier</title>
-<meta name="description" content="Transform your text into professional, assertive, or concise tones instantly. Free AI email and message polisher with 100+ specialized scenarios. No login required.">
+<title>Free AI Professional Tone Fixer — ToneFix AI</title>
+<meta name="description" content="Transform your text into professional, assertive, or concise tones instantly. 100+ specialized scenarios. Free, no login.">
 <link rel="stylesheet" href="style.css">
-<style>
-.cat-section { margin-bottom: 48px; }
-.cat-title { font-size: 18px; font-weight: 600; margin-bottom: 20px; letter-spacing: -0.01em; }
-.tool-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; }
-.tool-card {
-  display: flex; align-items: center; gap: 12px;
-  padding: 16px 20px;
-  background: rgba(255,255,255,0.02);
-  border: 1px solid rgba(255,255,255,0.05);
-  border-radius: 14px;
-  color: var(--text);
-  text-decoration: none;
-  transition: background 0.2s, border-color 0.2s;
-}
-.tool-card:hover { background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.08); }
-.tool-icon { font-size: 20px; }
-.tool-title { font-size: 14px; font-weight: 500; flex: 1; }
-.tool-arrow { color: var(--text-tertiary); }
-.hero-home { text-align: center; padding: 60px 0 40px; }
-.hero-home h1 { font-size: 32px; font-weight: 600; letter-spacing: -0.02em; margin-bottom: 12px; }
-.hero-home p { font-size: 17px; color: var(--text-secondary); max-width: 600px; margin: 0 auto; }
-</style>
 </head>
 <body>
 <header>
-  <div class="logo">✨ ToneModifier <span>AI</span></div>
+  <div class="logo">ToneFix <span>AI</span></div>
   <nav>
-    <a href="index.html">Home</a>
-    <a href="how-to-ask-client-for-payment-professionally.html">Payment</a>
+    <a href="index.html">Tools</a>
+    <a href="how-to-ask-client-for-payment-professionally.html">Examples</a>
     <a href="how-to-ask-for-salary-raise-by-email.html">Salary</a>
-    <a href="privacy.html">Privacy</a>
   </nav>
+  <a href="how-to-ask-client-for-payment-professionally.html" class="btn-cta">Try Free Tool</a>
 </header>
 <main>
-  <section class="hero-home">
-    <h1>Free AI Professional Tone Fixer</h1>
-    <p>Transform any rough text into polished, professional communication. Choose from 100+ specialized scenarios — from asking for a raise to chasing unpaid invoices.</p>
+  <section class="hero" style="padding-bottom:20px">
+    <h1>Make Your Message Sound Professional in Seconds</h1>
+    <p>Transform casual, rude or unclear messages into professional workplace communication.</p>
+    <div class="tool-box">
+      <textarea id="inputText" placeholder="Paste your message here... e.g. I can't do this anymore"></textarea>
+      <div class="btn-row">
+        <button id="submitBtn" class="btn-primary" onclick="processText()">✨ Convert to Professional Tone</button>
+        <button class="btn-outline" onclick="document.getElementById('inputText').value='';document.getElementById('results').classList.remove('visible')">Clear</button>
+      </div>
+      <div id="status" class="status"></div>
+      <div class="results" id="results">
+        <div class="result-card"><h3>👔 Formal & Professional</h3><p id="resFormal"></p><button class="copy-btn" onclick="copyCard('resFormal')">📋 Copy</button></div>
+        <div class="result-card"><h3>🔥 Polite but Assertive</h3><p id="resAssertive"></p><button class="copy-btn" onclick="copyCard('resAssertive')">📋 Copy</button></div>
+        <div class="result-card"><h3>⚡ Executive Concise</h3><p id="resConcise"></p><button class="copy-btn" onclick="copyCard('resConcise')">📋 Copy</button></div>
+      </div>
+    </div>
+    <p class="example-hint">↓ Try: "I want to leave early today" or "Why haven't you paid yet"</p>
   </section>
+  <h2 class="section-title">Popular Workplace Transformations</h2>
+  <div class="examples-grid">
+    <a href="how-to-say-no-to-additional-tasks.html" class="example-card">How to Say No to Your Boss</a>
+    <a href="how-to-ask-for-salary-raise-by-email.html" class="example-card">How to Ask for a Salary Increase</a>
+    <a href="how-to-decline-business-proposal.html" class="example-card">How to Reject a Client Politely</a>
+    <a href="how-to-ask-for-project-update-by-email.html" class="example-card">How to Ask for a Deadline Extension</a>
+    <a href="how-to-ask-client-for-payment-professionally.html" class="example-card">How to Ask Client for Payment</a>
+    <a href="how-to-follow-up-on-job-application.html" class="example-card">How to Follow Up After an Interview</a>
+  </div>
+  <div class="trust-section">
+    <div class="trust-item"><div class="icon">💬</div><h3>Improve Communication</h3><p>Turn awkward or emotional messages into clear, professional language.</p></div>
+    <div class="trust-item"><div class="icon">🛡️</div><h3>Avoid Misunderstandings</h3><p>Different tones for different situations — formal, assertive, or concise.</p></div>
+    <div class="trust-item"><div class="icon">⚡</div><h3>Sound Professional Instantly</h3><p>No login required. Paste, click, copy. Done in seconds.</p></div>
+  </div>
+  <h2 class="section-title">All Tools & Scenarios</h2>
   <section class="cat-section">
           <h2 class="cat-title">求职与跟进</h2>
           <div class="tool-grid"><a href="how-to-reply-to-recruiter-professionally.html" class="tool-card">
@@ -232,11 +239,8 @@
         </section>
 </main>
 <footer>
-  <p>© 2026 ToneModifier AI &middot;
-    <a href="privacy.html">Privacy Policy</a> &middot;
-    <a href="terms.html">Terms of Service</a> &middot;
-    <a href="contact.html">Contact Us</a>
-  </p>
+  <p>© 2026 ToneFix AI · <a href="privacy.html">Privacy Policy</a> · <a href="terms.html">Terms</a> · <a href="contact.html">Contact</a></p>
 </footer>
+<script src="script.js"></script>
 </body>
 </html>
