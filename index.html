@@ -10,21 +10,28 @@
 <script>tailwind.config={theme:{extend:{colors:{primary:'#2563EB',surface:'#FAFAFA',border:'#E5E7EB',text:'#0F172A'}},fontFamily:{sans:['-apple-system','BlinkMacSystemFont','Segoe UI','system-ui','sans-serif']}}}</script>
 <style>
   body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;background:#FAFAFA;color:#0F172A}
-  .copy-btn:hover{opacity:0.8}
-  .result-card{transition:all 0.2s}
-  .result-card:hover{border-color:#2563EB}
+  .tone-card{transition:all .2s}
+  .tone-card:hover{transform:translateY(-4px);box-shadow:0 10px 25px rgba(0,0,0,.08);border-color:#2563EB}
+  .scene-card{transition:all .2s}
+  .scene-card:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,.06)}
+  .faq-q{cursor:pointer}
+  .faq-a{overflow:hidden;max-height:0;transition:max-height .3s ease}
+  .faq-a.open{max-height:300px}
+  .example-card{transition:all .2s}
+  .example-card:hover{border-color:#2563EB;transform:translateY(-2px)}
 </style>
 </head>
 <body class="bg-[#FAFAFA] text-[#0F172A] min-h-screen">
 
 <!-- Nav -->
-<header class="sticky top-0 bg-white/85 backdrop-blur border-b border-gray-200 z-10">
+<header class="sticky top-0 bg-white/85 backdrop-blur border-b border-gray-200 z-20">
   <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
     <a href="index.html" class="text-xl font-bold tracking-tight">Tone<span class="text-primary">Modifier</span></a>
-    <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-500">
+    <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-gray-500">
       <a href="index.html" class="hover:text-gray-900">Tools</a>
-      <a href="tone/professional.html" class="hover:text-gray-900">Examples</a>
-      <a href="how-to-ask-for-raise.html" class="hover:text-gray-900">Scenarios</a>
+      <a href="tone/professional.html" class="hover:text-gray-900">Tone Examples</a>
+      <a href="how-to-ask-for-raise.html" class="hover:text-gray-900">Use Cases</a>
+      <a href="#" class="hover:text-gray-900">Blog</a>
     </nav>
     <a href="index.html" class="bg-primary text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-blue-700 transition">Try Free</a>
   </div>
@@ -50,7 +57,7 @@
         </div>
         <div id="status" class="text-xs text-gray-400 mt-2 text-center min-h-4"></div>
       </div>
-      <div class="bg-white rounded-2xl border border-gray-200 p-6 shadow-lg text-left hidden md:block" id="resultsPreview">
+      <div class="bg-white rounded-2xl border border-gray-200 p-6 shadow-lg text-left" id="resultsPreview">
         <p class="text-xs text-gray-400 uppercase tracking-wide mb-4">Result Preview</p>
         <div id="results" class="space-y-4">
           <div class="result-card bg-gray-50 rounded-xl p-5 border border-gray-100 mb-4">
@@ -72,97 +79,196 @@
   </section>
 
   <!-- Trust Bar -->
-  <div class="flex flex-wrap justify-center gap-8 py-8 border-y border-gray-100 text-sm text-gray-400 mb-16">
+  <div class="flex flex-wrap justify-center gap-8 py-8 border-y border-gray-100 text-sm text-gray-400 mb-12">
     <span>💬 100+ Email Scenarios</span>
     <span>⚡ Instant Results</span>
     <span>🔒 No Data Stored</span>
   </div>
+</main>
 
-  <!-- Popular Tones -->
-  <section class="mb-16">
+<!-- Popular Tones — alternating bg -->
+<section class="bg-gradient-to-b from-white to-[#f8fafc] py-16">
+  <div class="max-w-4xl mx-auto px-6">
     <h2 class="text-2xl font-bold text-center mb-8">Popular Tones</h2>
     <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-      <a href="tone/professional.html" class="bg-white rounded-2xl border border-gray-200 p-5 text-center hover:shadow-lg hover:border-primary transition">
+      <a href="tone/professional.html" class="tone-card bg-white rounded-2xl border border-gray-200 p-5 text-center">
   <div class="text-3xl mb-2">👔</div>
   <h3 class="font-semibold text-sm">Professional</h3>
-</a><a href="tone/friendly.html" class="bg-white rounded-2xl border border-gray-200 p-5 text-center hover:shadow-lg hover:border-primary transition">
+</a><a href="tone/friendly.html" class="tone-card bg-white rounded-2xl border border-gray-200 p-5 text-center">
   <div class="text-3xl mb-2">😊</div>
   <h3 class="font-semibold text-sm">Friendly</h3>
-</a><a href="tone/polite.html" class="bg-white rounded-2xl border border-gray-200 p-5 text-center hover:shadow-lg hover:border-primary transition">
+</a><a href="tone/polite.html" class="tone-card bg-white rounded-2xl border border-gray-200 p-5 text-center">
   <div class="text-3xl mb-2">🤝</div>
   <h3 class="font-semibold text-sm">Polite</h3>
-</a><a href="tone/formal.html" class="bg-white rounded-2xl border border-gray-200 p-5 text-center hover:shadow-lg hover:border-primary transition">
+</a><a href="tone/formal.html" class="tone-card bg-white rounded-2xl border border-gray-200 p-5 text-center">
   <div class="text-3xl mb-2">📋</div>
   <h3 class="font-semibold text-sm">Formal</h3>
-</a><a href="tone/casual.html" class="bg-white rounded-2xl border border-gray-200 p-5 text-center hover:shadow-lg hover:border-primary transition">
+</a><a href="tone/casual.html" class="tone-card bg-white rounded-2xl border border-gray-200 p-5 text-center">
   <div class="text-3xl mb-2">💬</div>
   <h3 class="font-semibold text-sm">Casual</h3>
-</a><a href="tone/confident.html" class="bg-white rounded-2xl border border-gray-200 p-5 text-center hover:shadow-lg hover:border-primary transition">
+</a><a href="tone/confident.html" class="tone-card bg-white rounded-2xl border border-gray-200 p-5 text-center">
   <div class="text-3xl mb-2">💪</div>
   <h3 class="font-semibold text-sm">Confident</h3>
-</a><a href="tone/persuasive.html" class="bg-white rounded-2xl border border-gray-200 p-5 text-center hover:shadow-lg hover:border-primary transition">
+</a><a href="tone/persuasive.html" class="tone-card bg-white rounded-2xl border border-gray-200 p-5 text-center">
   <div class="text-3xl mb-2">🎯</div>
   <h3 class="font-semibold text-sm">Persuasive</h3>
-</a><a href="tone/empathetic.html" class="bg-white rounded-2xl border border-gray-200 p-5 text-center hover:shadow-lg hover:border-primary transition">
+</a><a href="tone/empathetic.html" class="tone-card bg-white rounded-2xl border border-gray-200 p-5 text-center">
   <div class="text-3xl mb-2">💙</div>
   <h3 class="font-semibold text-sm">Empathetic</h3>
 </a>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Popular Scenarios -->
-  <section class="mb-16">
+<!-- Before/After Examples — key SEO module -->
+<section class="bg-white py-16">
+  <div class="max-w-4xl mx-auto px-6">
+    <h2 class="text-2xl font-bold text-center mb-2">Before & After Examples</h2>
+    <p class="text-gray-400 text-center text-sm mb-8">See how ToneModifier transforms real messages</p>
+    <div class="grid md:grid-cols-2 gap-6">
+      <div class="example-card bg-[#FAFAFA] rounded-2xl border border-gray-100 p-6">
+        <p class="text-xs text-gray-400 uppercase tracking-wide mb-3">Before</p>
+        <p class="text-red-500 text-sm italic mb-4">"Why haven't you paid me yet? This is unacceptable."</p>
+        <div class="border-t border-gray-200 pt-4">
+          <p class="text-xs text-gray-400 uppercase tracking-wide mb-3">After <span class="text-primary font-semibold">Professional</span></p>
+          <p class="text-gray-700 text-sm">"I wanted to follow up regarding the payment. Could you please provide an update when convenient? Thank you."</p>
+        </div>
+      </div>
+      <div class="example-card bg-[#FAFAFA] rounded-2xl border border-gray-100 p-6">
+        <p class="text-xs text-gray-400 uppercase tracking-wide mb-3">Before</p>
+        <p class="text-red-500 text-sm italic mb-4">"I need a raise. I've been here two years."</p>
+        <div class="border-t border-gray-200 pt-4">
+          <p class="text-xs text-gray-400 uppercase tracking-wide mb-3">After <span class="text-primary font-semibold">Professional</span></p>
+          <p class="text-gray-700 text-sm">"I would like to schedule a conversation to discuss my compensation based on my contributions over the past two years, including the recent [project] results."</p>
+        </div>
+      </div>
+      <div class="example-card bg-[#FAFAFA] rounded-2xl border border-gray-100 p-6">
+        <p class="text-xs text-gray-400 uppercase tracking-wide mb-3">Before</p>
+        <p class="text-red-500 text-sm italic mb-4">"That's not my job. Ask someone else."</p>
+        <div class="border-t border-gray-200 pt-4">
+          <p class="text-xs text-gray-400 uppercase tracking-wide mb-3">After <span class="text-primary font-semibold">Polite</span></p>
+          <p class="text-gray-700 text-sm">"I believe that falls under [department]'s scope. I'd recommend reaching out to [name] who handles that area."</p>
+        </div>
+      </div>
+      <div class="example-card bg-[#FAFAFA] rounded-2xl border border-gray-100 p-6">
+        <p class="text-xs text-gray-400 uppercase tracking-wide mb-3">Before</p>
+        <p class="text-red-500 text-sm italic mb-4">"Sorry for the delay. We messed up."</p>
+        <div class="border-t border-gray-200 pt-4">
+          <p class="text-xs text-gray-400 uppercase tracking-wide mb-3">After <span class="text-primary font-semibold">Professional</span></p>
+          <p class="text-gray-700 text-sm">"I apologize for the delay. We've identified the issue and are implementing the following steps to ensure it doesn't happen again. Here's our updated timeline."</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Popular Scenarios -->
+<section class="bg-gradient-to-b from-white to-[#f8fafc] py-16">
+  <div class="max-w-4xl mx-auto px-6">
     <h2 class="text-2xl font-bold text-center mb-8">Popular Scenarios</h2>
     <div class="grid md:grid-cols-4 gap-6">
-      <a href="how-to-ask-for-raise.html" class="bg-white rounded-2xl border border-gray-200 p-6 hover:shadow-lg hover:border-primary transition text-left">
-  <h3 class="font-semibold mb-2">Job Applications</h3>
-  <p class="text-xs text-gray-400">12 templates</p>
-</a><a href="how-to-ask-for-raise.html" class="bg-white rounded-2xl border border-gray-200 p-6 hover:shadow-lg hover:border-primary transition text-left">
-  <h3 class="font-semibold mb-2">Salary Negotiation</h3>
-  <p class="text-xs text-gray-400">8 templates</p>
-</a><a href="how-to-ask-for-raise.html" class="bg-white rounded-2xl border border-gray-200 p-6 hover:shadow-lg hover:border-primary transition text-left">
-  <h3 class="font-semibold mb-2">Client Communication</h3>
-  <p class="text-xs text-gray-400">14 templates</p>
-</a><a href="how-to-ask-for-raise.html" class="bg-white rounded-2xl border border-gray-200 p-6 hover:shadow-lg hover:border-primary transition text-left">
-  <h3 class="font-semibold mb-2">Workplace Emails</h3>
-  <p class="text-xs text-gray-400">18 templates</p>
-</a>
+      <div class="scene-card bg-white rounded-2xl border border-gray-200 p-6 text-left">
+  <h3 class="font-semibold mb-1">Job Applications</h3>
+  <p class="text-xs text-gray-400 mb-3">12 templates</p>
+  <ul class="space-y-1.5 mb-3"><li><a href="follow-up-after-interview.html" class="text-xs text-gray-500 hover:text-primary transition">Follow Up Interview</a></li><li><a href="reply-to-recruiter.html" class="text-xs text-gray-500 hover:text-primary transition">Reply to Recruiter</a></li><li><a href="thank-you-after-interview.html" class="text-xs text-gray-500 hover:text-primary transition">Thank You After Interview</a></li></ul>
+  <a href="follow-up-after-interview.html" class="text-xs text-primary font-medium hover:underline">View All →</a>
+</div><div class="scene-card bg-white rounded-2xl border border-gray-200 p-6 text-left">
+  <h3 class="font-semibold mb-1">Salary Negotiation</h3>
+  <p class="text-xs text-gray-400 mb-3">8 templates</p>
+  <ul class="space-y-1.5 mb-3"><li><a href="how-to-ask-for-raise.html" class="text-xs text-gray-500 hover:text-primary transition">Ask for a Raise</a></li><li><a href="salary-negotiation-email.html" class="text-xs text-gray-500 hover:text-primary transition">Salary Negotiation Email</a></li><li><a href="salary-negotiation-email.html" class="text-xs text-gray-500 hover:text-primary transition">Counter Offer Response</a></li></ul>
+  <a href="how-to-ask-for-raise.html" class="text-xs text-primary font-medium hover:underline">View All →</a>
+</div><div class="scene-card bg-white rounded-2xl border border-gray-200 p-6 text-left">
+  <h3 class="font-semibold mb-1">Client Communication</h3>
+  <p class="text-xs text-gray-400 mb-3">14 templates</p>
+  <ul class="space-y-1.5 mb-3"><li><a href="ask-client-for-payment.html" class="text-xs text-gray-500 hover:text-primary transition">Ask Client for Payment</a></li><li><a href="reject-client-proposal.html" class="text-xs text-gray-500 hover:text-primary transition">Reject Client Proposal</a></li><li><a href="apology-email-delay.html" class="text-xs text-gray-500 hover:text-primary transition">Apology Email for Delay</a></li></ul>
+  <a href="ask-client-for-payment.html" class="text-xs text-primary font-medium hover:underline">View All →</a>
+</div><div class="scene-card bg-white rounded-2xl border border-gray-200 p-6 text-left">
+  <h3 class="font-semibold mb-1">Workplace Emails</h3>
+  <p class="text-xs text-gray-400 mb-3">18 templates</p>
+  <ul class="space-y-1.5 mb-3"><li><a href="call-out-sick-email.html" class="text-xs text-gray-500 hover:text-primary transition">Call Out Sick Email</a></li><li><a href="resignation-email.html" class="text-xs text-gray-500 hover:text-primary transition">Resignation Email</a></li><li><a href="tell-boss-too-much-work.html" class="text-xs text-gray-500 hover:text-primary transition">Tell Boss Too Much Work</a></li></ul>
+  <a href="call-out-sick-email.html" class="text-xs text-primary font-medium hover:underline">View All →</a>
+</div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- How It Works -->
-  <section class="mb-16 text-center">
-    <h2 class="text-2xl font-bold mb-8">How It Works</h2>
+<!-- How It Works -->
+<section class="bg-white py-16">
+  <div class="max-w-4xl mx-auto px-6 text-center">
+    <h2 class="text-2xl font-bold mb-10">How It Works</h2>
     <div class="grid md:grid-cols-3 gap-8">
-      <div class="p-6"><div class="text-3xl mb-3">1</div><h3 class="font-semibold mb-2">Paste Your Message</h3><p class="text-sm text-gray-500">Type or paste any text you want to improve — from emails to Slack messages.</p></div>
-      <div class="p-6"><div class="text-3xl mb-3">2</div><h3 class="font-semibold mb-2">AI Rewrites Tone</h3><p class="text-sm text-gray-500">Our AI rewrites your message in three distinct professional tones in seconds.</p></div>
-      <div class="p-6"><div class="text-3xl mb-3">3</div><h3 class="font-semibold mb-2">Copy & Send</h3><p class="text-sm text-gray-500">Pick your favorite version, click copy, and paste it wherever you need.</p></div>
+      <div class="p-6"><div class="text-3xl mb-3">📝</div><h3 class="font-semibold mb-2">Paste Your Message</h3><p class="text-sm text-gray-500">Type or paste any text you want to improve — from emails to Slack messages.</p></div>
+      <div class="p-6"><div class="text-3xl mb-3">🤖</div><h3 class="font-semibold mb-2">AI Rewrites Tone</h3><p class="text-sm text-gray-500">Our AI rewrites your message in three distinct professional tones in seconds.</p></div>
+      <div class="p-6"><div class="text-3xl mb-3">📋</div><h3 class="font-semibold mb-2">Copy & Send</h3><p class="text-sm text-gray-500">Pick your favorite version, click copy, and paste it wherever you need.</p></div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- FAQ -->
-  <section class="mb-16">
+<!-- FAQ Accordion -->
+<section class="bg-[#FAFAFA] py-16">
+  <div class="max-w-2xl mx-auto px-6">
     <h2 class="text-2xl font-bold text-center mb-8">Frequently Asked Questions</h2>
-    <div class="max-w-2xl mx-auto space-y-6">
-      <div class="bg-white rounded-2xl border border-gray-200 p-6">
-        <h3 class="font-semibold mb-2">What is an AI Tone Modifier?</h3>
-        <p class="text-sm text-gray-500">An AI Tone Modifier rewrites your text while keeping the original meaning but adjusting the tone — making it sound more professional, friendly, polite, or any other style you need.</p>
+    <div class="space-y-3">
+      <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden">
+        <div class="faq-q p-5 flex justify-between items-center font-medium text-sm" onclick="this.nextElementSibling.classList.toggle('open');this.querySelector('span').classList.toggle('rotate-45')">
+          What is an AI Tone Modifier?
+          <span class="text-gray-400 text-lg transition-transform">+</span>
+        </div>
+        <div class="faq-a"><p class="px-5 pb-5 text-sm text-gray-500">An AI Tone Modifier rewrites your text while keeping the original meaning but adjusting the tone — making it sound more professional, friendly, polite, or any other style you need. Unlike generic writing tools, it preserves your intent and specific details.</p></div>
       </div>
-      <div class="bg-white rounded-2xl border border-gray-200 p-6">
-        <h3 class="font-semibold mb-2">Is ToneModifier free?</h3>
-        <p class="text-sm text-gray-500">Yes. The core tool is completely free with no sign-up required. We may offer premium features in the future, but the tone conversion will always be free.</p>
+      <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden">
+        <div class="faq-q p-5 flex justify-between items-center font-medium text-sm" onclick="this.nextElementSibling.classList.toggle('open');this.querySelector('span').classList.toggle('rotate-45')">
+          Can I rewrite emails into different tones?
+          <span class="text-gray-400 text-lg transition-transform">+</span>
+        </div>
+        <div class="faq-a"><p class="px-5 pb-5 text-sm text-gray-500">Yes. Paste your email or message and the tool generates versions in Professional, Friendly, Polite, Formal, Casual, Confident, Persuasive, and Empathetic tones. Choose the one that fits your situation.</p></div>
       </div>
-      <div class="bg-white rounded-2xl border border-gray-200 p-6">
-        <h3 class="font-semibold mb-2">Does the AI change the meaning of my message?</h3>
-        <p class="text-sm text-gray-500">No. The AI is designed to preserve your original meaning and intent while adjusting only the tone, wording, and emotional register of your message.</p>
+      <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden">
+        <div class="faq-q p-5 flex justify-between items-center font-medium text-sm" onclick="this.nextElementSibling.classList.toggle('open');this.querySelector('span').classList.toggle('rotate-45')">
+          Is ToneModifier free?
+          <span class="text-gray-400 text-lg transition-transform">+</span>
+        </div>
+        <div class="faq-a"><p class="px-5 pb-5 text-sm text-gray-500">Yes. The core tool is completely free with no sign-up required. There are no hidden fees, usage limits, or premium features that block basic functionality. We may offer advanced features in the future, but tone conversion will always be free.</p></div>
       </div>
-      <div class="bg-white rounded-2xl border border-gray-200 p-6">
-        <h3 class="font-semibold mb-2">Can I make my message sound more professional?</h3>
-        <p class="text-sm text-gray-500">Yes. Paste your message above and the tool will generate a polished, boardroom-ready version that maintains your original message.</p>
+      <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden">
+        <div class="faq-q p-5 flex justify-between items-center font-medium text-sm" onclick="this.nextElementSibling.classList.toggle('open');this.querySelector('span').classList.toggle('rotate-45')">
+          Does the AI change the meaning of my message?
+          <span class="text-gray-400 text-lg transition-transform">+</span>
+        </div>
+        <div class="faq-a"><p class="px-5 pb-5 text-sm text-gray-500">No. The AI is designed to preserve your original meaning and intent while adjusting only the tone, wording, and emotional register. Your message, key points, and requests remain intact — just delivered more effectively.</p></div>
       </div>
     </div>
-  </section>
-</main>
+  </div>
+</section>
+
+<!-- All Scenarios -->
+<section class="bg-white py-16">
+  <div class="max-w-4xl mx-auto px-6">
+    <h2 class="text-2xl font-bold text-center mb-8">All Scenarios</h2>
+    <div class="grid md:grid-cols-2 gap-2 text-sm">
+      <a href="how-to-ask-for-raise.html" class="p-3 rounded-xl hover:bg-[#FAFAFA] text-gray-600 hover:text-gray-900 transition flex items-center gap-2"><span class="text-primary">→</span> How to Ask for a Raise</a>
+      <a href="follow-up-after-interview.html" class="p-3 rounded-xl hover:bg-[#FAFAFA] text-gray-600 hover:text-gray-900 transition flex items-center gap-2"><span class="text-primary">→</span> Follow Up After Interview</a>
+      <a href="ask-client-for-payment.html" class="p-3 rounded-xl hover:bg-[#FAFAFA] text-gray-600 hover:text-gray-900 transition flex items-center gap-2"><span class="text-primary">→</span> Ask Client for Payment</a>
+      <a href="reject-client-proposal.html" class="p-3 rounded-xl hover:bg-[#FAFAFA] text-gray-600 hover:text-gray-900 transition flex items-center gap-2"><span class="text-primary">→</span> Reject Client Proposal</a>
+      <a href="follow-up-unpaid-invoice.html" class="p-3 rounded-xl hover:bg-[#FAFAFA] text-gray-600 hover:text-gray-900 transition flex items-center gap-2"><span class="text-primary">→</span> Follow Up Unpaid Invoice</a>
+      <a href="call-out-sick-email.html" class="p-3 rounded-xl hover:bg-[#FAFAFA] text-gray-600 hover:text-gray-900 transition flex items-center gap-2"><span class="text-primary">→</span> Call Out Sick Email</a>
+      <a href="resignation-email.html" class="p-3 rounded-xl hover:bg-[#FAFAFA] text-gray-600 hover:text-gray-900 transition flex items-center gap-2"><span class="text-primary">→</span> Resignation Email</a>
+      <a href="tell-boss-too-much-work.html" class="p-3 rounded-xl hover:bg-[#FAFAFA] text-gray-600 hover:text-gray-900 transition flex items-center gap-2"><span class="text-primary">→</span> Tell Boss Too Much Work</a>
+      <a href="disagree-with-boss.html" class="p-3 rounded-xl hover:bg-[#FAFAFA] text-gray-600 hover:text-gray-900 transition flex items-center gap-2"><span class="text-primary">→</span> Disagree With Boss</a>
+      <a href="salary-negotiation-email.html" class="p-3 rounded-xl hover:bg-[#FAFAFA] text-gray-600 hover:text-gray-900 transition flex items-center gap-2"><span class="text-primary">→</span> Salary Negotiation Email</a>
+      <a href="cold-outreach-email.html" class="p-3 rounded-xl hover:bg-[#FAFAFA] text-gray-600 hover:text-gray-900 transition flex items-center gap-2"><span class="text-primary">→</span> Cold Outreach Email</a>
+      <a href="apology-email-delay.html" class="p-3 rounded-xl hover:bg-[#FAFAFA] text-gray-600 hover:text-gray-900 transition flex items-center gap-2"><span class="text-primary">→</span> Apology Email for Delay</a>
+      <a href="thank-you-after-interview.html" class="p-3 rounded-xl hover:bg-[#FAFAFA] text-gray-600 hover:text-gray-900 transition flex items-center gap-2"><span class="text-primary">→</span> Thank You After Interview</a>
+      <a href="mental-health-day-email.html" class="p-3 rounded-xl hover:bg-[#FAFAFA] text-gray-600 hover:text-gray-900 transition flex items-center gap-2"><span class="text-primary">→</span> Mental Health Day Email</a>
+      <a href="reply-to-recruiter.html" class="p-3 rounded-xl hover:bg-[#FAFAFA] text-gray-600 hover:text-gray-900 transition flex items-center gap-2"><span class="text-primary">→</span> Reply to Recruiter</a>
+      <a href="introduce-yourself-new-team.html" class="p-3 rounded-xl hover:bg-[#FAFAFA] text-gray-600 hover:text-gray-900 transition flex items-center gap-2"><span class="text-primary">→</span> Introduce Yourself to New Team</a>
+      <a href="ask-for-referral.html" class="p-3 rounded-xl hover:bg-[#FAFAFA] text-gray-600 hover:text-gray-900 transition flex items-center gap-2"><span class="text-primary">→</span> Ask for a Referral</a>
+      <a href="announce-price-increase.html" class="p-3 rounded-xl hover:bg-[#FAFAFA] text-gray-600 hover:text-gray-900 transition flex items-center gap-2"><span class="text-primary">→</span> Announce Price Increase</a>
+      <a href="email-tone-modifier.html" class="p-3 rounded-xl hover:bg-[#FAFAFA] text-gray-600 hover:text-gray-900 transition flex items-center gap-2"><span class="text-primary">→</span> Email Tone Modifier</a>
+      <a href="professional-email-rewriter.html" class="p-3 rounded-xl hover:bg-[#FAFAFA] text-gray-600 hover:text-gray-900 transition flex items-center gap-2"><span class="text-primary">→</span> Professional Email Rewriter</a>
+    </div>
+  </div>
+</section>
 
 <!-- Footer -->
 <footer class="border-t border-gray-200 bg-white">
@@ -179,7 +285,7 @@
       <h4 class="font-semibold mb-3">Resources</h4>
       <div class="space-y-2 text-gray-500">
         <a href="how-to-ask-for-raise.html" class="block hover:text-gray-900">Examples</a>
-        <a href="index.html#faq" class="block hover:text-gray-900">FAQ</a>
+        <a href="index.html" class="block hover:text-gray-900">FAQ</a>
       </div>
     </div>
     <div>
@@ -199,6 +305,19 @@
     © 2026 ToneModifier. All rights reserved.
   </div>
 </footer>
+
+<!-- Back to Top -->
+<button onclick="window.scrollTo({top:0,behavior:'smooth'})" id="backToTop" class="fixed bottom-6 right-6 bg-primary text-white w-12 h-12 rounded-full shadow-lg opacity-0 transition-opacity z-30 flex items-center justify-center text-xl hover:bg-blue-700">↑</button>
+<script>
+  window.addEventListener('scroll',function(){
+    document.getElementById('backToTop').style.opacity = window.scrollY > 600 ? '1' : '0';
+  });
+</script>
+
+<!-- Sticky Mobile CTA -->
+<div class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 p-3 md:hidden z-30">
+  <a href="#top" class="block text-center bg-primary text-white py-3 rounded-full font-semibold text-sm">✨ Try Tone Modifier</a>
+</div>
 
 <script src="script.js"></script>
 </body>
