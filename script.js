@@ -21,7 +21,7 @@ async function processText() {
   }
 
   btnEl.disabled = true;
-  btnEl.textContent = "Processing...";
+  btnEl.textContent = "Converting...";
   showStatus("Generating three tone variations...", "");
   resultsEl.classList.remove("visible");
 
@@ -48,7 +48,7 @@ async function processText() {
     showStatus("Network error. Please check your connection and try again.", "error");
   } finally {
     btnEl.disabled = false;
-    btnEl.textContent = "Transform Tone ✨";
+    btnEl.textContent = "✨ Convert to Professional Tone";
   }
 }
 

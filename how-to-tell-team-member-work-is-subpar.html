@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tell a Team Member Their Work Is Subpar — ToneModifier (Free, No Login)</title>
+<title>Tell a Team Member Their Work Is Subpar — ToneFix AI (Free, No Login)</title>
 <meta name="description" content="Be direct about quality issues while preserving morale.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://tonemodifier.com/how-to-tell-team-member-work-is-subpar.html">
@@ -12,49 +12,87 @@
 <body>
 
 <header>
-  <div class="logo">✨ ToneModifier <span>AI</span></div>
+  <div class="logo">ToneFix <span>AI</span></div>
   <nav>
     <a href="index.html">Tools</a>
-    <a href="how-to-ask-client-for-payment-professionally.html">Payment</a>
+    <a href="how-to-ask-client-for-payment-professionally.html">Examples</a>
     <a href="how-to-ask-for-salary-raise-by-email.html">Salary</a>
     <a href="how-to-decline-business-proposal.html">Decline</a>
     <a href="how-to-follow-up-on-job-application.html">Follow Up</a>
   </nav>
+  <a href="index.html" class="btn-cta">Try Free Tool</a>
 </header>
 
 <main>
+
+  <!-- Hero -->
   <section class="hero">
     <h1>Deliver Tough Feedback to an Underperforming Report</h1>
     <p>Be direct about quality issues while preserving morale.</p>
+
+    <!-- Tool Box -->
+    <div class="tool-box">
+      <textarea id="inputText" placeholder="Paste your message here... e.g. &quot;I can't do this anymore&quot;"></textarea>
+      <div class="btn-row">
+        <button id="submitBtn" class="btn-primary" onclick="processText()">✨ Convert to Professional Tone</button>
+        <button class="btn-outline" onclick="document.getElementById('inputText').value=''; document.getElementById('results').classList.remove('visible');">Clear</button>
+      </div>
+      <div id="status" class="status"></div>
+
+      <!-- Results -->
+      <div class="results" id="results">
+        <div class="result-card">
+          <h3>👔 Formal & Professional</h3>
+          <p id="resFormal"></p>
+          <button class="copy-btn" onclick="copyCard('resFormal')">📋 Copy</button>
+        </div>
+        <div class="result-card">
+          <h3>🔥 Polite but Assertive</h3>
+          <p id="resAssertive"></p>
+          <button class="copy-btn" onclick="copyCard('resAssertive')">📋 Copy</button>
+        </div>
+        <div class="result-card">
+          <h3>⚡ Executive Concise</h3>
+          <p id="resConcise"></p>
+          <button class="copy-btn" onclick="copyCard('resConcise')">📋 Copy</button>
+        </div>
+      </div>
+    </div>
+
+    <p class="example-hint">↓ Try: "I don't want to take this task" or "Why haven't you paid yet"</p>
   </section>
 
-  <section class="tool-container">
-    <textarea id="inputText" placeholder="Paste your rough text here... (e.g., 'I need this done now' or 'Why haven't you paid yet')"></textarea>
-    <div class="btn-row">
-      <button id="submitBtn" class="btn-primary" onclick="processText()">✨ Transform Tone</button>
-      <button class="btn-secondary" onclick="document.getElementById('inputText').value=''">Clear</button>
-    </div>
-    <div id="status" class="status"></div>
+  <!-- Popular Examples -->
+  <h2 class="section-title">Popular Workplace Transformations</h2>
+  <div class="examples-grid">
+    <a href="how-to-say-no-to-additional-tasks.html" class="example-card">How to Say No to Your Boss</a>
+    <a href="how-to-ask-for-salary-raise-by-email.html" class="example-card">How to Ask for a Salary Increase</a>
+    <a href="how-to-decline-business-proposal.html" class="example-card">How to Reject a Client Politely</a>
+    <a href="how-to-ask-for-project-update-by-email.html" class="example-card">How to Ask for a Deadline Extension</a>
+    <a href="how-to-ask-client-for-payment-professionally.html" class="example-card">How to Ask Client for Payment</a>
+    <a href="how-to-follow-up-on-job-application.html" class="example-card">How to Follow Up After an Interview</a>
+  </div>
 
-    <div class="results" id="results">
-      <div class="card">
-        <h3>👔 Formal & Professional</h3>
-        <p id="resFormal"></p>
-        <button class="copy-btn" onclick="copyCard('resFormal')">📋 Copy</button>
-      </div>
-      <div class="card">
-        <h3>🔥 Polite but Assertive</h3>
-        <p id="resAssertive"></p>
-        <button class="copy-btn" onclick="copyCard('resAssertive')">📋 Copy</button>
-      </div>
-      <div class="card">
-        <h3>⚡ Executive Concise</h3>
-        <p id="resConcise"></p>
-        <button class="copy-btn" onclick="copyCard('resConcise')">📋 Copy</button>
-      </div>
+  <!-- Trust -->
+  <div class="trust-section">
+    <div class="trust-item">
+      <div class="icon">💬</div>
+      <h3>Improve Communication</h3>
+      <p>Turn awkward or emotional messages into clear, professional workplace language.</p>
     </div>
-  </section>
+    <div class="trust-item">
+      <div class="icon">🛡️</div>
+      <h3>Avoid Misunderstandings</h3>
+      <p>Different tones for different situations — formal, assertive, or concise.</p>
+    </div>
+    <div class="trust-item">
+      <div class="icon">⚡</div>
+      <h3>Sound Professional Instantly</h3>
+      <p>No login required. Paste, click, copy. Done in seconds.</p>
+    </div>
+  </div>
 
+  <!-- SEO Content -->
   <section class="content-section">
     <h2>How to Use This Tell a Team Member Their Work Is Subpar Tool</h2>
     <p>The ToneModifier works in three simple steps:</p>
@@ -64,15 +102,16 @@
     <div class="faq">
       <h3>Frequently Asked Questions</h3>
       <div class="qa"><p class="q">How do I give tough feedback to a high-performing employee?</p><p class="a">Separate the person from the behavior. Start with genuine appreciation for their strengths, then address the specific behavior that needs to change, and end with confidence in their ability to improve. Be direct — high performers usually prefer candor over sugarcoating.</p></div>
-<div class="qa"><p class="q">How do I announce bad news to my team without killing morale?</p><p class="a">Be transparent about what happened and what you know. Share what you're doing about it and what support is available. Then give space for questions. Teams handle bad news better when leaders show vulnerability and a clear path forward.</p></div>
-<div class="qa"><p class="q">How do I write a subject line that gets a response?</p><p class="a">Be specific and action-oriented. Instead of 'Meeting,' write 'Decision needed: Q3 budget by Friday.' Instead of 'Hello,' write 'Quick question about the Johnson account.' The subject line should tell the recipient what you need and why they should open it.</p></div>
 <div class="qa"><p class="q">What's the ideal length for a professional email?</p><p class="a">Five sentences or fewer is the gold standard. If you need more, use bullet points. People scan emails on their phones — if your key message isn't visible in the preview pane, it probably won't be read.</p></div>
+<div class="qa"><p class="q">How can I make my emails sound more confident?</p><p class="a">Remove hedging language like 'I just think,' 'Maybe we could,' and 'Sorry to bother you.' Replace with direct statements: 'I recommend,' 'Let's move forward with,' 'Here's the update.' Also, keep sentences shorter — confidence and brevity go hand in hand.</p></div>
+<div class="qa"><p class="q">How do I announce bad news to my team without killing morale?</p><p class="a">Be transparent about what happened and what you know. Share what you're doing about it and what support is available. Then give space for questions. Teams handle bad news better when leaders show vulnerability and a clear path forward.</p></div>
     </div>
   </section>
+
 </main>
 
 <footer>
-  <p>© 2026 ToneModifier AI &middot;
+  <p>© 2026 ToneFix AI &middot;
     <a href="privacy.html">Privacy Policy</a> &middot;
     <a href="terms.html">Terms of Service</a> &middot;
     <a href="contact.html">Contact Us</a>

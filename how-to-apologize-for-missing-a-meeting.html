@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Apologize for Missing a Meeting — ToneModifier (Free, No Login)</title>
+<title>Apologize for Missing a Meeting — ToneFix AI (Free, No Login)</title>
 <meta name="description" content="Own your absence and rebuild professional credibility.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://tonemodifier.com/how-to-apologize-for-missing-a-meeting.html">
@@ -12,49 +12,87 @@
 <body>
 
 <header>
-  <div class="logo">✨ ToneModifier <span>AI</span></div>
+  <div class="logo">ToneFix <span>AI</span></div>
   <nav>
     <a href="index.html">Tools</a>
-    <a href="how-to-ask-client-for-payment-professionally.html">Payment</a>
+    <a href="how-to-ask-client-for-payment-professionally.html">Examples</a>
     <a href="how-to-ask-for-salary-raise-by-email.html">Salary</a>
     <a href="how-to-decline-business-proposal.html">Decline</a>
     <a href="how-to-follow-up-on-job-application.html">Follow Up</a>
   </nav>
+  <a href="index.html" class="btn-cta">Try Free Tool</a>
 </header>
 
 <main>
+
+  <!-- Hero -->
   <section class="hero">
     <h1>Write a Genuine Apology for a Missed Meeting</h1>
     <p>Own your absence and rebuild professional credibility.</p>
+
+    <!-- Tool Box -->
+    <div class="tool-box">
+      <textarea id="inputText" placeholder="Paste your message here... e.g. &quot;I can't do this anymore&quot;"></textarea>
+      <div class="btn-row">
+        <button id="submitBtn" class="btn-primary" onclick="processText()">✨ Convert to Professional Tone</button>
+        <button class="btn-outline" onclick="document.getElementById('inputText').value=''; document.getElementById('results').classList.remove('visible');">Clear</button>
+      </div>
+      <div id="status" class="status"></div>
+
+      <!-- Results -->
+      <div class="results" id="results">
+        <div class="result-card">
+          <h3>👔 Formal & Professional</h3>
+          <p id="resFormal"></p>
+          <button class="copy-btn" onclick="copyCard('resFormal')">📋 Copy</button>
+        </div>
+        <div class="result-card">
+          <h3>🔥 Polite but Assertive</h3>
+          <p id="resAssertive"></p>
+          <button class="copy-btn" onclick="copyCard('resAssertive')">📋 Copy</button>
+        </div>
+        <div class="result-card">
+          <h3>⚡ Executive Concise</h3>
+          <p id="resConcise"></p>
+          <button class="copy-btn" onclick="copyCard('resConcise')">📋 Copy</button>
+        </div>
+      </div>
+    </div>
+
+    <p class="example-hint">↓ Try: "I don't want to take this task" or "Why haven't you paid yet"</p>
   </section>
 
-  <section class="tool-container">
-    <textarea id="inputText" placeholder="Paste your rough text here... (e.g., 'I need this done now' or 'Why haven't you paid yet')"></textarea>
-    <div class="btn-row">
-      <button id="submitBtn" class="btn-primary" onclick="processText()">✨ Transform Tone</button>
-      <button class="btn-secondary" onclick="document.getElementById('inputText').value=''">Clear</button>
-    </div>
-    <div id="status" class="status"></div>
+  <!-- Popular Examples -->
+  <h2 class="section-title">Popular Workplace Transformations</h2>
+  <div class="examples-grid">
+    <a href="how-to-say-no-to-additional-tasks.html" class="example-card">How to Say No to Your Boss</a>
+    <a href="how-to-ask-for-salary-raise-by-email.html" class="example-card">How to Ask for a Salary Increase</a>
+    <a href="how-to-decline-business-proposal.html" class="example-card">How to Reject a Client Politely</a>
+    <a href="how-to-ask-for-project-update-by-email.html" class="example-card">How to Ask for a Deadline Extension</a>
+    <a href="how-to-ask-client-for-payment-professionally.html" class="example-card">How to Ask Client for Payment</a>
+    <a href="how-to-follow-up-on-job-application.html" class="example-card">How to Follow Up After an Interview</a>
+  </div>
 
-    <div class="results" id="results">
-      <div class="card">
-        <h3>👔 Formal & Professional</h3>
-        <p id="resFormal"></p>
-        <button class="copy-btn" onclick="copyCard('resFormal')">📋 Copy</button>
-      </div>
-      <div class="card">
-        <h3>🔥 Polite but Assertive</h3>
-        <p id="resAssertive"></p>
-        <button class="copy-btn" onclick="copyCard('resAssertive')">📋 Copy</button>
-      </div>
-      <div class="card">
-        <h3>⚡ Executive Concise</h3>
-        <p id="resConcise"></p>
-        <button class="copy-btn" onclick="copyCard('resConcise')">📋 Copy</button>
-      </div>
+  <!-- Trust -->
+  <div class="trust-section">
+    <div class="trust-item">
+      <div class="icon">💬</div>
+      <h3>Improve Communication</h3>
+      <p>Turn awkward or emotional messages into clear, professional workplace language.</p>
     </div>
-  </section>
+    <div class="trust-item">
+      <div class="icon">🛡️</div>
+      <h3>Avoid Misunderstandings</h3>
+      <p>Different tones for different situations — formal, assertive, or concise.</p>
+    </div>
+    <div class="trust-item">
+      <div class="icon">⚡</div>
+      <h3>Sound Professional Instantly</h3>
+      <p>No login required. Paste, click, copy. Done in seconds.</p>
+    </div>
+  </div>
 
+  <!-- SEO Content -->
   <section class="content-section">
     <h2>How to Use This Apologize for Missing a Meeting Tool</h2>
     <p>Paste your rough draft or emotionally-charged message into the input box above. Click <strong>Transform Tone</strong>, and our AI will instantly rewrite it into three distinct professional tones: <strong>Formal & Professional</strong> (suited for official correspondence), <strong>Polite but Assertive</strong> (ideal when you need to stand your ground diplomatically), and <strong>Executive Concise</strong> (perfect for busy leaders who want the bottom line).</p>
@@ -62,16 +100,17 @@
 
     <div class="faq">
       <h3>Frequently Asked Questions</h3>
-      <div class="qa"><p class="q">Should I use emojis in professional emails?</p><p class="a">It depends on your workplace culture and relationship with the recipient. In formal external communication, avoid them. In internal Slack messages with close colleagues, a well-placed emoji can soften tone. When in doubt, leave them out.</p></div>
-<div class="qa"><p class="q">What's the right way to call in sick via email?</p><p class="a">Keep it brief and professional. State that you're unwell and unable to work, mention (without oversharing) whether you expect to be back tomorrow or need more time, and note any urgent items that need coverage. No need for graphic details about symptoms.</p></div>
+      <div class="qa"><p class="q">How do I apologize for missing a meeting?</p><p class="a">Acknowledge the impact, not just the fact. Say 'I apologize for missing our meeting and any inconvenience it caused' rather than just 'Sorry I missed it.' Offer to reschedule immediately and propose concrete times.</p></div>
 <div class="qa"><p class="q">How do I write a subject line that gets a response?</p><p class="a">Be specific and action-oriented. Instead of 'Meeting,' write 'Decision needed: Q3 budget by Friday.' Instead of 'Hello,' write 'Quick question about the Johnson account.' The subject line should tell the recipient what you need and why they should open it.</p></div>
-<div class="qa"><p class="q">How do I apologize for missing a meeting?</p><p class="a">Acknowledge the impact, not just the fact. Say 'I apologize for missing our meeting and any inconvenience it caused' rather than just 'Sorry I missed it.' Offer to reschedule immediately and propose concrete times.</p></div>
+<div class="qa"><p class="q">What's the right way to call in sick via email?</p><p class="a">Keep it brief and professional. State that you're unwell and unable to work, mention (without oversharing) whether you expect to be back tomorrow or need more time, and note any urgent items that need coverage. No need for graphic details about symptoms.</p></div>
+<div class="qa"><p class="q">Should I use emojis in professional emails?</p><p class="a">It depends on your workplace culture and relationship with the recipient. In formal external communication, avoid them. In internal Slack messages with close colleagues, a well-placed emoji can soften tone. When in doubt, leave them out.</p></div>
     </div>
   </section>
+
 </main>
 
 <footer>
-  <p>© 2026 ToneModifier AI &middot;
+  <p>© 2026 ToneFix AI &middot;
     <a href="privacy.html">Privacy Policy</a> &middot;
     <a href="terms.html">Terms of Service</a> &middot;
     <a href="contact.html">Contact Us</a>
